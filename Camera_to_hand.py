@@ -68,15 +68,15 @@ with Mp_hands.Hands(max_num_hands=2 , min_detection_confidence = 0.8, min_tracki
                 Mp_drawing.draw_landmarks(frame, hand_landmarks, connections = Mp_hands.HAND_CONNECTIONS)
                 for id, lm in enumerate(hand_landmarks.landmark):
                     h, w, c, = frame.shape
-                    cx, cy = int(lm.x*w), int(lm.y*h)
+                    cx, cy, cz = int(lm.x*w), int(lm.y*h), int(lm.z*c)
                     
                     if hand_closed(hand_landmarks):
                         print("Hand is CLOSED")
                     else:
                         print("Hand is OPEN")
+                    # print(f"ID: {id}, X: {lm.x:.2f}, Y: {lm.y:.2f}, Z: {lm.z:.2f}")
 
-                   # print(f"ID: {id}, X: {cx}, y:{cy}")
-
+             
 
         cv2.imshow('Original Frame', frame)
 
