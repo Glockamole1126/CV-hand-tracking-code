@@ -26,15 +26,39 @@ def finger_closed(hand_landmarks, tip_id, pip_id, wrist_id = 0):
 
     return tip_dist < pip_dist
 
+def thumb_closed (hand_landmarks):
+    thumb_tip = hand_landmarks.landmark[4]
+    wrist = hand_landmarks.landmark[0]
+    Carpal_location = hand_landmarks.landmark[1]
+
+    thumb_to_wrist = distance(thumb_tip, wrist)
+    Hand_span = distance(Carpal_location, wrist)
+
+    if Hand_span == 0:
+        return False
+
+    ratio = thumb_to_wrist / Hand_span
+  
+    
+
+    return(ratio < 2.85)
+  
+
+   
+
+
 def hand_closed(hand_landmarks):
 
-    finger_tips = [4, 8, 12, 16, 20]   # thumb, index, middle, ring, pinky
-    finger_pips = [3, 6, 10, 14, 18]   # corrected pip indices
+    finger_tips = [ 8, 12, 16, 20]   # thumb, index, middle, ring, pinky
+    finger_pips = [ 6, 10, 14, 18]   # corrected pip indices
 
     closed_count = 0
     for tip, pip in zip(finger_tips, finger_pips):
         if finger_closed(hand_landmarks, tip, pip):
             closed_count += 1  
+    if thumb_closed(hand_landmarks):
+       closed_count += 1
+
 
     return closed_count == 5
 
@@ -66,10 +90,11 @@ with Mp_hands.Hands(max_num_hands=2 , min_detection_confidence = 0.8, min_tracki
  
               
                 Mp_drawing.draw_landmarks(frame, hand_landmarks, connections = Mp_hands.HAND_CONNECTIONS)
+                
                 for id, lm in enumerate(hand_landmarks.landmark):
                     h, w, c, = frame.shape
                     cx, cy, cz = int(lm.x*w), int(lm.y*h), int(lm.z*c)
-                    
+                 
                     if hand_closed(hand_landmarks):
                         print("Hand is CLOSED")
                     else:
