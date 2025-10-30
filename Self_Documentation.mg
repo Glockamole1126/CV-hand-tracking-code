@@ -17,3 +17,8 @@ log 3 2025/08/16
 log 4 2025/10/28 7:12pm
     - im currently trying to figure out and dewbug the thumb    
         - i belvei the best way to do it  currnely is to find teh distnace between teh thumg tip and the wrist point, then have a minimium value of when teh thumb is almsot down, this will tell me if the thmb is close to the wrist, aka is down, however to deal with teh bugging of perspetive im gonna secondary check this clause with the  fact that the thumb must alsop be close to teh values of the pointe finger tip
+
+Log 5 2025/10/29 10:28 
+    - I fixed and adjust the thumb to run a hadn span (constant reatio for my hadn size regardless of location in the frame) this allows me to move inedpentedly within the frame and have verified ratio to my hand, next up is to prevent terminal spam
+    - i added the  value of "last check" and it simply double vefiyies of wehet teh last line printed was open of close and prevent repates and will only print if there is a change from opne to close or vice versa
+Log 6 

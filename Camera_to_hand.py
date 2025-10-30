@@ -8,7 +8,7 @@ import math
 
 Mp_hands = mp.solutions.hands
 Mp_drawing = mp.solutions.drawing_utils
-
+Last_check = "open"
 
 
 
@@ -96,9 +96,13 @@ with Mp_hands.Hands(max_num_hands=2 , min_detection_confidence = 0.8, min_tracki
                     cx, cy, cz = int(lm.x*w), int(lm.y*h), int(lm.z*c)
                  
                     if hand_closed(hand_landmarks):
-                        print("Hand is CLOSED")
+                        if Last_check == "open":
+                            print("Hand is CLOSED")
+                            Last_check = "closed"
                     else:
-                        print("Hand is OPEN")
+                        if Last_check == "closed":
+                            print("Hand is OPEN")
+                            Last_check = "open"
                     # print(f"ID: {id}, X: {lm.x:.2f}, Y: {lm.y:.2f}, Z: {lm.z:.2f}")
 
              
