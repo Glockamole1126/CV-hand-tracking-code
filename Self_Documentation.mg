@@ -21,4 +21,6 @@ log 4 2025/10/28 7:12pm
 Log 5 2025/10/29 10:28 
     - I fixed and adjust the thumb to run a hadn span (constant reatio for my hadn size regardless of location in the frame) this allows me to move inedpentedly within the frame and have verified ratio to my hand, next up is to prevent terminal spam
     - i added the  value of "last check" and it simply double vefiyies of wehet teh last line printed was open of close and prevent repates and will only print if there is a change from opne to close or vice versa
-Log 6 
+Log 6 2025/11/04 01:04
+    - The main thing i want to be able to do now is that i want to be able to use the abiltiy of cordinate or "bend" tracking to figure out how much my finger is bent, i want to be able to figure that out so i can cloen them adn convert them to specific anlges of rotations on a moter/servo to contorl a hand
+    - I also need to be able to decern if it is the right of left hand in frame
